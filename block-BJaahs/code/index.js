@@ -1,3 +1,5 @@
+// Without Object
+
 let title = "title";
 let options = ["option1", "option2", "option3", "option4"];
 
@@ -8,19 +10,20 @@ function isAnswerCorrect (index) {
 }
 
 function getCorrectAnswer() {
-    return correctAnswerIndex;
+    return options[correctAnswerIndex];
 }
 
+// With Object
 
-let question1 = {
+let question = {
     title: "title",
     options: ["option1", "option2", "option3", "option4"],
     correctAnswerIndex: 2,
-    isAnswerCorrect: function(index) {
-        return index === correctAnswerIndex;
+    isAnswerCorrect(index) {
+        return index === question.correctAnswerIndex;
     }, 
-    getCorrectAnswer: function () {
-        return correctAnswerIndex;
+    getCorrectAnswer() {
+        return question.options[correctAnswerIndex];
     } 
 }; 
 // Using function to create object 
@@ -31,24 +34,26 @@ function createQues1(title, options, correctAnswerIndex) {
     ques.options = options;
     ques.correctAnswerIndex = correctAnswerIndex;
     ques.isAnswerCorrect =  function(index) {
-        return index === correctAnswerIndex;
+        return index === ques.correctAnswerIndex;
     }
     ques.getCorrectAnswer = function () {
-        return correctAnswerIndex;
+        return ques.options[correctAnswerIndex];
     }
     return ques; 
 }
 
+// Using 'this' keyword
+
 function createQues2(title, options, correctAnswerIndex) {
     let ques =  {};
-    this.title = title;
-    this.options = options;
-    this.correctAnswerIndex = correctAnswerIndex;
-    this.isAnswerCorrect =  function(index) {
-        return index === correctAnswerIndex;
+    ques.title = title;
+    ques.options = options;
+    ques.correctAnswerIndex = correctAnswerIndex;
+    ques.isAnswerCorrect =  function(index) {
+        return index === this.correctAnswerIndex;
     }
     ques.getCorrectAnswer = function () {
-        return correctAnswerIndex;
+        return this.options[correctAnswerIndex];
     } 
     return ques;
 }

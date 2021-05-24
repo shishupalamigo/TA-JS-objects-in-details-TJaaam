@@ -2,13 +2,10 @@
 
 let title = "title";
 let options = ["option1", "option2", "option3", "option4"];
-
 let correctAnswerIndex = 2;
-
 function isAnswerCorrect (index) {
     return index === correctAnswerIndex;
 }
-
 function getCorrectAnswer() {
     return options[correctAnswerIndex];
 }
@@ -25,7 +22,8 @@ let question = {
     getCorrectAnswer() {
         return question.options[correctAnswerIndex];
     } 
-}; 
+};
+ 
 // Using function to create object 
 
 function createQues1(title, options, correctAnswerIndex) {

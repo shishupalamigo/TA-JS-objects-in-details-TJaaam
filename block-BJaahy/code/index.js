@@ -13,7 +13,7 @@ class Square  {
         return this.height * this.width;
     }
     get area() {
-        if(this.numberofTimes === 4){
+        if(this.numberofTimes >= 4){
              alert("Upper limit reached");
         }
         else {
@@ -32,7 +32,7 @@ class Square  {
         }
     }
     static isEqual(sqr1, sqr2) {
-        return sqr1.height * sqr1.width === sqr2.height * sqr2.width;
+        return (sqr1.height * sqr1.width) === (sqr2.height * sqr2.width);
     }
 }
 
@@ -60,7 +60,7 @@ class User {
     }
     set fullName (fullName) {
         let splitFullName = fullName.split(" ");
-        if (fullName.length > 5) {
+        if (fullName.length >= 5) {
             this.firstName = splitFullName[0];
             this.lastName = splitFullName[1]; 
         }
@@ -80,6 +80,8 @@ class User {
 let user1 = new User("Arya", "Stark");
 let user2 = new User("John", "Snow");
 
+user1.fullName = "Sansa Stark";
+user2.fullName = "Bran"; 
 console.log(user1.fullName);
 console.log(user2.nameContains("now"));
 

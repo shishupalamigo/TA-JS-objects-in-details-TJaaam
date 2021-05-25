@@ -31,7 +31,7 @@ let personTwo = createUser("Miller", 24);
 
 let userMethods = {
     sayHello: function () {
-        alert(`Welcome ${user.name}`);
+        alert(`Welcome ${this.name}`);
     },
 }
 
@@ -64,14 +64,14 @@ CreateUser.prototype = {
 
  personTwo = new CreateUser("Miller", 24);
 
-// 7. Try calling `personOne.sayHello()` and `personTwo.sayHello()`. Check if you get the required output.
+// 7. Try calling `personOne.sayH ello()` and `personTwo.sayHello()`. Check if you get the required output.
 
 personOne.sayHello(); //Welcome Jack
 personTwo.sayHello(); //Welcome Kate
 
 // 8. Convert the `createUser` function into `User` class.
 
-class CreateNewUser  {
+class User  {
     constructor(name, age) {
         this.name = name;
         this.age = age;
@@ -83,9 +83,9 @@ class CreateNewUser  {
 
 // 9. Check by creating two instance of the class using data of two different persons and re-assign the value of `personOne` and `personTwo`
 
-personOne = new CreateNewUser("Arya", 16);
+personOne = new User("Arya", 16);
 
-personTwo = new CreateNewUser("Bran", 16);
+personTwo = new User("Bran", 16);
 
 // 10. Try calling `personOne.sayHello()` and `personTwo.sayHello()`. Check if you get the required output.
 personOne.sayHello(); //Welcome Jack

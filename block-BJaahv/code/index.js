@@ -10,8 +10,9 @@ function user(name, id, noOfProjects) {
         return obj.noOfProjects;
     },
     obj.changeName = function(newName) {
+        let prevName = obj.name
         obj.name = newName;
-        return obj.name;
+        return prevName;
     },
     obj.incrementProject = function() {
         return ++obj.noOfProjects;
@@ -24,11 +25,28 @@ function user(name, id, noOfProjects) {
 
 let user1 = user("John", 217, 50);
 let user2 = user("Arya", 200, 100);
-
+ 
 //Prototypal Pattern
-function user(name, id, noOfProjects) {
-    let obj = Object.create(user.prototype);
+let  userMethods = {
+    getProjects: function() {
+        return this.noOfProjects;
+    },
+    changeName: function(newName) {
+        let prevName = this.name
+        this.name = newName;
+        return prevName;
+    },
+    incrementProject: function() {
+        return ++this.noOfProjects;
+    },
+    decrementProject: function() {
+        return --this.noOfProjects;
+    },
+};
 
+function createUser(name, id, noOfProjects) {
+    let obj = Object.create(userMethods);
+    
     obj.name = name;
     obj.id = id;
     obj.noOfProjects = noOfProjects;
@@ -36,24 +54,10 @@ function user(name, id, noOfProjects) {
     return obj;
 }
 
-user.prototype = {
-    getProjects: function() {
-        return this.noOfProjects;
-    },
-    changeName: function(newName) {
-        this.name = newName;
-        return this.name;
-    },
-    incrementProject: function() {
-        return ++this.noOfProjects;
-    },
-    decrementProject: function() {
-        return --this.noOfProjects;
-    }
-}
 
-let user3 = user("James", 41, 78);
-let user4 = user("Janet", 23, 65);
+
+let user3 = createUser("James", 41, 78);
+let user4 = createUser("Janet", 23, 65);
 
 //Pseudo classical way
 
@@ -70,8 +74,9 @@ User.prototype = {
     },
 
     changeName(newName) {
+        let prevName = this.name
         this.name = newName;
-        return this.name;
+        return prevName;
     },
 
     incrementProject() {
@@ -100,8 +105,9 @@ class UserDetails {
     }
 
     changeName(newName) {
+        let prevName = this.name
         this.name = newName;
-        return this.name;
+        return prevName;
     }
 
     incrementProject() {

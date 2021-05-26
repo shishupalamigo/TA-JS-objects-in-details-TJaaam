@@ -68,6 +68,9 @@ function PersonConstructor() {
   this.greet = function () {
     console.log("hello");
   }
+  this.introduce = function() { 
+    console.log(`Hi my name is ${this.name}`);
+   } 
 }
 
 // /********* Uncomment this line to test your work! *********/
@@ -77,9 +80,10 @@ simon.greet(); // -> Logs 'hello'
 /*** CHALLENGE 2 of 3 ***/
 
 function PersonFromConstructor (name, age) {
-  PersonConstructor.call(this);
-  this.name = name;
-  this.age = age;
+  let person = new PersonConstructor();
+  person.name = name;
+  person.age = age;
+  return person;
 }
 
 var mike = new PersonFromConstructor('Mike', 30);
@@ -90,16 +94,6 @@ console.log(mike.age); //-> Logs 30
 mike.greet(); //-> Logs 'hello'
 
 /*** CHALLENGE 3 of 3 ***/
-function PersonConstructor(name, age) { 
-  this.name = name; 
-  this.age = age;
-  this.greet = function () {
-    console.log("Hello");
-  } 
-  this.introduce = function() { 
-    console.log(`Hi my name is ${this.name}`);
-   } 
-  }
 
 mike.introduce(); // -> Logs 'Hi, my name is Mike'
 
@@ -160,13 +154,17 @@ function userFactory(name, score) {
 var adminFunctionStore = Object.create(userFunctionStore);
 
 
-function adminFactory(name, score, type) {
-  userFactory.call(this, name, score);
-  this.type = type;
+function adminFactory(name, score) {
+  let admin = userFactory(name, score);
+  Object.setPrototypeOf(admin, adminFunctionStore);
+  admin.type = "Admin";
+  return admin;
 }
 
 /* Put code here for a method called sharePublicMessage*/
-
+adminFunctionStore.sharePublicMessage = function () {
+  console.log("Welcome User");
+}
 
 var adminFromFactory = adminFactory('Eva', 5);
 

@@ -33,13 +33,12 @@ let dogMethods = {
    },
    changeColor(newColor) {
        this.color = newColor;
+       return this.color;
    }, 
    summary() {
         return `I am ${this.name} and I am of ${this.color} color. I can also bark`
    }
 }
-
-Object.setPrototypeOf(dogMethods, animalMethods);
 
 function createDog(name, location, numberOfLegs, color) {
     let dog = createAnimal(location, numberOfLegs);
@@ -50,6 +49,7 @@ function createDog(name, location, numberOfLegs, color) {
 
     return dog;
 }
+Object.setPrototypeOf(dogMethods, animalMethods);
 
 
 // CATS
@@ -63,13 +63,13 @@ let catMethods = {
     },
     changeColorOfEyes(newColor) {
         this.colorOfEyes = newColor;
+        return this.colorOfEyes;
     }, 
     summary() {
          return `I am ${this.name} and the color of my eyes are ${this.colorOfEyes}. I can also do meow meow`;
     }    
 }
 
-Object.setPrototypeOf(catMethods, animalMethods);
 
 function createCat (name, location, numberOfLegs, colorOfEyes) {
     let cat = createAnimal(location, numberOfLegs);
@@ -80,3 +80,5 @@ function createCat (name, location, numberOfLegs, colorOfEyes) {
 
     return cat;   
 }
+
+Object.setPrototypeOf(catMethods, animalMethods);

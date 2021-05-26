@@ -144,7 +144,7 @@ obj.getThis2(); // obj
 obj.getThis2.call(a); // { a: 'a'}
 
 // Output
-obj.getThis3(); // windows
+obj.getThis3(); // window
 
 // Output
 obj.getThis4(); //  obj
@@ -184,7 +184,7 @@ console.log(person.print()); // Jay Person
 let name1 = person.print;
 let name2 = person.details;
 
-console.log(name1()); // 
+console.log(name1()); // ''
 console.log(name2.print()); // Jay Details
 
 // --------
@@ -257,7 +257,7 @@ let obj2 = {
 };
 
 let getSecondData = obj2.printSecondData.bind(obj1);
-console.log(getSecondData()); // 2, beacuse we explicitly binding obj1 to this of obj2.
+console.log(getSecondData()); // 2, beacuse we are explicitly binding obj1 to this of obj2.
 
 // --------------
 

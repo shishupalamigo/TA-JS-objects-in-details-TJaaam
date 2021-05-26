@@ -100,7 +100,7 @@ class Animal {
 
 // DOG
 
-class Dog extends Animal{
+class Dog extends Animal {
     constructor(name, location, numberOfLegs, color) {
         super(location, numberOfLegs);
         this.name = name;
@@ -125,7 +125,7 @@ class Dog extends Animal{
 
 // CATS
 
-class Cat extends Animal{
+class Cat extends Animal {
     constructor(name, location, numberOfLegs, colorOfEyes) {
         super(location, numberOfLegs);    
         this.name = name;

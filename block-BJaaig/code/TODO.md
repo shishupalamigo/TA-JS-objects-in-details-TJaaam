@@ -34,16 +34,16 @@ console.log(user2.sayHello()); // Hello Arya
 console.log(user.sayHello.call(user2)); // Hello Arya
 console.log(user.sayHello.call(user2, 'Hey')); // Hey Arya
 console.log(user.sayHello.apply(user2, ['Hey'])); // Hey Arya
-console.log(typeof user.sayHello.bind(user2)); // function
+console.log(typeof user.sayHello.bind(user2)); // "function" bind always returns a new function reference
 console.log(user.sayHello.bind(user2)()); // Hello Arya
 console.log(userSayHello()); // Hello undefined Because cant access `this`  
-console.log(typeof userSayHello.bind(user2)); // function 
+console.log(typeof userSayHello.bind(user2)); // "function" 
 console.log(userSayHello.bind(user2)()); // Hello Arya
-console.log(user3.sayHello()); // TypeError: user3.sayHello is not a function because user3 can not access the methods defined in other users.
+console.log(user3.sayHello()); // ReferenceError: user3.sayHello is not defined because user3 can not access the methods defined in other users.
 console.log(userSayHello.apply(user3)); // Hello Bran
 console.log(userSayHello.call(user3)); // Hello Bran
-console.log(typeof new MainUser()); // object because `new` always creates a new object.
-console.log(typeof new MainUser()); // object because `new` always creates a new object.
+console.log(typeof new MainUser()); // "object" because `new` always creates a new object.
+console.log(typeof new MainUser); // "object" because `new` always creates a new object.
 console.log(new MainUser().sayHello()); // Hello Tyrion
 console.log(new MainUser().sayHello.call(user2)); // Hello Arya
 console.log(new MainUser().sayHello.call(user)); // Hello John

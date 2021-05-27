@@ -9,7 +9,7 @@ class Stack {
     pop() {
       this.arr.pop();
     }
-    peek(i = this.arr.length-1) {
+    peek(i = this.arr.length - 1) {
       return this.arr[i];
     }
     reverse() {
@@ -54,7 +54,8 @@ class Queue {
       return this.arr;
   }
   dequeue() {
-    this.arr.shift();           
+    this.arr.shift(); 
+    return this.arr;         
   }
   peek(index = 0) {
     return this.arr[index];

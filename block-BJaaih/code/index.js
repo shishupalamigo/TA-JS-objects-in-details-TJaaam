@@ -71,7 +71,7 @@ Make sure it does not the changes the original array.
 // shuffle
 
 Array.prototype.shuffle = function () {
-  let shuffledArr = [...this].sort((a, b) => {
+  let shuffledArr = [...this].sort(() => {
     return Math.random() - .5;
   });
   return shuffledArr;
@@ -91,13 +91,22 @@ Unique means no element should come multiple times.
 
 // UNIQUE
 
+// Array.prototype.unique = function () {
+//   for(let i = 0; i < this.length; i++) {
+//     if(this.lastIndexOf(this[i]) !== i) {
+//       this.splice(i, 1);
+//     }
+//   } 
+//   return this;
+// }
+
 Array.prototype.unique = function () {
-  for(let i = 0; i < this.length; i++) {
-    if(this.lastIndexOf(this[i]) !== i) {
-      this.splice(i, 1);
+  return this.reduce((acc,cv) => {
+    if(!acc.includes(cv)) {
+      acc.push(cv);
     }
-  } 
-  return this;
+    return acc;
+  }, []);
 }
 
 // Test to check the shuffle method (It will return different output every time you call)
@@ -114,16 +123,25 @@ array that will contain only element that is common in both the array.
 
 // INTERSECTION
 
- Array.prototype.intersection = function (arr) {
-  let finalArr = [];
+//  Array.prototype.intersection = function (arr) {
+//   let finalArr = [];
 
-  for(let i = 0; i < this.length; i++) {
-    if(arr.includes(this[i]) && (!finalArr.includes(this[i]))) {
+//   for(let i = 0; i < this.length; i++) {
+//     if(arr.includes(this[i]) && (!finalArr.includes(this[i]))) {
       
-      finalArr.push(this[i]);
+//       finalArr.push(this[i]);
+//     }
+//   }
+//   return finalArr;
+// }
+
+Array.prototype.intersection = function (arr) {
+  return this.reduce((acc, cv) => {
+    if(arr.includes(cv)) {
+      acc.push(cv);
     }
-  }
-  return finalArr;
+    return acc;
+  }, []).unique();
 }
 
 // Test to check the shuffle method (It will return different output every time you call)
@@ -145,7 +163,7 @@ Array.prototype.chunk = function (length = 1) {
     finalArr.push(this.slice(i, i+length));
   }
   return finalArr;
-}
+} 
 
 // Test to check the shuffle method (It will return different output every time you call)
 console.log(num.chunk(2)); // [[1, 2], [3, 4], [2, 3], [6, 7], [7]]

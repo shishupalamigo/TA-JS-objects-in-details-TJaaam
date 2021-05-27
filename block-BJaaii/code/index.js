@@ -42,3 +42,48 @@ console.log(myStack.peek()); // 'Two'
 console.log(myStack.isEmpty()); // false
 myStack.pop();
 console.log(myStack.isEmpty()); // true
+
+
+
+class Queue {
+  constructor(){
+    this.arr = [];   
+  }
+  enqueue(item) {
+    this.arr.push(item);
+      return this.arr;
+  }
+  dequeue() {
+    this.arr.shift();           
+  }
+  peek(index = 0) {
+    return this.arr[index];
+  }
+  isEmpty() {
+     return this.arr.length === 0;
+  }
+  displayQueue() {
+    return this.arr.join(" ");
+  }
+  get length() {
+    return this.arr.length;
+  }
+}
+
+// TEST
+
+let atmQueue = new Queue();
+atmQueue.enqueue('Aman');
+atmQueue.enqueue('John');
+atmQueue.enqueue('Rohan');
+console.log(atmQueue.displayQueue()); // "Aman John Rohan"
+console.log(atmQueue.length); // 3
+console.log(atmQueue.peek()); // "Aman"
+console.log(atmQueue.peek(1)); // "John"
+atmQueue.dequeue();
+console.log(atmQueue.length); // 2
+console.log(atmQueue.peek()); // 'John'
+console.log(atmQueue.isEmpty()); // false
+atmQueue.dequeue();
+atmQueue.dequeue();
+console.log(atmQueue.isEmpty()); // true

@@ -12,14 +12,12 @@ class Book {
     }
 }
 
-
-
 class Booklist {
     constructor() {
         this.AllBooks = [];
         this.index = 0;
     }
-    add(arr) {
+    add(arr = []) {
         this.AllBooks = this.AllBooks.concat(arr);
         return this.AllBooks;
     }
